@@ -27,16 +27,17 @@ class ActorsController < ApplicationController
   end
 
   def update_row
-    @actor = Actor.find(params[:id])
+    p = Actor.find(params[:id])
 
-    @actor.dob = params[:dob]
-    @actor.name = params[:name]
-    @actor.bio = params[:bio]
-    @actor.image_url = params[:image_url]
+    p.id = params[:id]
+    p.dob = params[:dob]
+    p.name = params[:name]
+    p.bio = params[:bio]
+    p.image_url = params[:image_url]
 
-    @actor.save
+    p.save
 
-    render("show")
+    redirect_to("/actors/#{p.id}")
   end
 
   def destroy
